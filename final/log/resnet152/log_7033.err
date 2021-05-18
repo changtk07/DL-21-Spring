@@ -1,0 +1,21 @@
++ mkdir /tmp/tc3149
++ export SINGULARITY_CACHEDIR=/tmp/tc3149
++ SINGULARITY_CACHEDIR=/tmp/tc3149
++ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
++ echo 'Dataset is copied to /tmp'
++ cd /home/tc3149/test
+/opt/slurm/data/slurmd/job07033/slurm_script: line 22: cd: /home/tc3149/test: No such file or directory
+++ ls -1r /scratch/tc3149/resnet152/
+++ head -1
++ LATEST_CP=checkpoint_0053.pth.tar
++ echo 'Latest checkpont: checkpoint_0053.pth.tar'
++ singularity exec --nv --bind /scratch --overlay /scratch/DL21SP/conda_fixed.sqsh:ro --overlay /tmp/student_dataset.sqsh:ro /share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif /bin/bash -c '
+source /ext3/env.sh
+conda activate dev
+python /home/tc3149/dl05/unsupervised.py -a resnet152 --resume /scratch/tc3149/resnet152/checkpoint_0053.pth.tar  --checkpoint /scratch/tc3149/resnet152/ --mlp --cos
+'
+slurmstepd: error: If munged is up, restart with --num-threads=10
+slurmstepd: error: Munge encode failed: Failed to access "/var/run/munge/munge.socket.2": No such file or directory
+slurmstepd: error: slurm_send_node_msg: authentication: Invalid authentication credential
+slurmstepd: error: If munged is up, restart with --num-threads=10
+slurmstepd: error: Munge encode failed: Failed to access "/var/run/munge/munge.socket.2": No such file or directory

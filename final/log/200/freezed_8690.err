@@ -1,0 +1,16 @@
++ mkdir /tmp/tc3149
++ export SINGULARITY_CACHEDIR=/tmp/tc3149
++ SINGULARITY_CACHEDIR=/tmp/tc3149
++ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
++ echo 'Dataset is copied to /tmp'
++ cd /home/tc3149/test
+/opt/slurm/data/slurmd/job08690/slurm_script: line 22: cd: /home/tc3149/test: No such file or directory
+++ head -1
+++ ls -1r /scratch/tc3149/freezed/
++ LATEST_CP=
++ echo 'Latest checkpont: '
++ singularity exec --nv --bind /scratch --overlay /scratch/DL21SP/conda_fixed.sqsh:ro --overlay /tmp/student_dataset.sqsh:ro /share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif /bin/bash -c '
+source /ext3/env.sh
+conda activate dev
+python /home/tc3149/dl05/freezed.py -a resnet152 --pretrained /scratch/tc3149/resnet152/checkpoint_0199.pth.tar --checkpoint /scratch/tc3149/freezed/ --cos
+'
