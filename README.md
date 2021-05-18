@@ -1,7 +1,7 @@
 # DL-21-Spring
 Homeworks and final project for Deep Learning, NYU 2021 Spring.
 
-Find class repo here: https://github.com/Atcold/NYU-DLSP21
+You can find class repo here: https://github.com/Atcold/NYU-DLSP21
 
 
 ## Final Project
